@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>合同会社ハナレワザ | スタートアップのコーポレート構築支援</title>
+  <meta name="description" content="スタートアップのカオスなコーポレートをまるっと綺麗にし、IPOやM&Aに耐えられるよう独り立ちさせる。合同会社ハナレワザ。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1a1a;
+      --ink-light: #4a4a4a;
+      --ink-faint: #8a8a8a;
+      --paper: #fafaf8;
+      --paper-warm: #f5f4f0;
+      --accent: #2d4a3e;
+      --accent-light: #3d6b58;
+      --rule: #e0ded8;
+      --serif: 'Cormorant Garamond', serif;
+      --sans: 'Noto Sans JP', sans-serif;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.9;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--accent); color: #fff; }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(250, 250, 248, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 1px 20px rgba(0,0,0,0.06); }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--ink-light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    .hamburger {
+      display: none;
+      background: none; border: none; cursor: pointer;
+      width: 28px; height: 20px; position: relative;
+    }
+    .hamburger span {
+      display: block; width: 100%; height: 1.5px;
+      background: var(--ink); position: absolute; left: 0;
+      transition: all 0.3s;
+    }
+    .hamburger span:nth-child(1) { top: 0; }
+    .hamburger span:nth-child(2) { top: 9px; }
+    .hamburger span:nth-child(3) { top: 18px; }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -30%; right: -20%;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(45,74,62,0.04) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-content { max-width: 760px; position: relative; }
+
+    .hero-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 500;
+      line-height: 1.4;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.4s forwards;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: var(--ink-light);
+      line-height: 2;
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.6s forwards;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      padding: 0.9rem 2.8rem;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      transition: all 0.3s;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.8s forwards;
+    }
+    .hero-cta:hover { background: var(--accent-light); transform: translateY(-1px); }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      animation: fadeUp 0.8s 1.2s forwards;
+    }
+    .scroll-hint span {
+      display: block;
+      width: 1px; height: 48px;
+      background: var(--rule);
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+    .scroll-hint span::after {
+      content: '';
+      position: absolute;
+      top: -100%; left: 0;
+      width: 100%; height: 100%;
+      background: var(--accent);
+      animation: scrollLine 2s infinite;
+    }
+
+    @keyframes scrollLine {
+      0% { top: -100%; }
+      50% { top: 100%; }
+      100% { top: 100%; }
+    }
+
+    /* ── Sections ── */
+    section { padding: 7rem 2rem; }
+
+    .section-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 500;
+      line-height: 1.5;
+      margin-bottom: 3rem;
+      color: var(--ink);
+    }
+
+    .section-rule {
+      width: 40px; height: 1px;
+      background: var(--accent);
+      margin-bottom: 3rem;
+    }
+
+    /* ── About ── */
+    #about { background: var(--paper); }
+
+    .about-lead {
+      font-size: 1.05rem;
+      line-height: 2.2;
+      color: var(--ink-light);
+      margin-bottom: 2.5rem;
+    }
+
+    .about-lead strong {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    /* ── Values / Strength ── */
+    #strength { background: var(--paper-warm); }
+
+    .strength-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      margin-top: 2rem;
+    }
+
+    .strength-card {
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .strength-card:last-child { border-bottom: none; }
+
+    .strength-num {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      color: var(--accent);
+      font-weight: 400;
+      margin-bottom: 0.8rem;
+      opacity: 0.6;
+    }
+
+    .strength-card h3 {
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+      line-height: 1.7;
+    }
+
+    .strength-card p {
+      font-size: 0.88rem;
+      color: var(--ink-light);
+      line-height: 1.9;
+    }
+
+    /* ── Cases ── */
+    #cases { background: var(--paper); }
+
+    .case-item {
+      margin-bottom: 3.5rem;
+      padding-bottom: 3.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .case-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .case-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.25rem 0.8rem;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .case-item h3 {
+      font-size: 1.05rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+
+    .case-item p, .case-item li {
+      font-size: 0.88rem;
+      color: var(--ink-light);
+      line-height: 2;
+    }
+
+    .case-item ul {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .case-item li {
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .case-item li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0.85rem;
+      width: 5px; height: 1px;
+      background: var(--accent);
+    }
+
+    /* ── Profile ── */
+    #profile { background: var(--paper-warm); }
+
+    .profile-card {
+      display: flex;
+      gap: 3rem;
+      align-items: flex-start;
+    }
+
+    .profile-icon {
+      flex-shrink: 0;
+      width: 100px; height: 100px;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .profile-info h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+    }
+
+    .profile-info .role {
+      font-size: 0.8rem;
+      color: var(--ink-faint);
+      letter-spacing: 0.05em;
+      margin-bottom: 1.2rem;
+    }
+
+    .profile-info p {
+      font-size: 0.88rem;
+      color: var(--ink-light);
+      line-height: 2;
+    }
+
+    /* ── Company Info ── */
+    #company { background: var(--paper); }
+
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .info-table tr { border-bottom: 1px solid var(--rule); }
+
+    .info-table th, .info-table td {
+      padding: 1.2rem 0;
+      text-align: left;
+      vertical-align: top;
+      font-size: 0.88rem;
+      font-weight: 400;
+    }
+
+    .info-table th {
+      width: 140px;
+      color: var(--ink-faint);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+    }
+
+    .info-table td {
+      color: var(--ink);
+    }
+
+    /* ── Contact ── */
+    #contact {
+      background: var(--ink);
+      color: #fff;
+      text-align: center;
+    }
+
+    #contact .section-label { color: rgba(255,255,255,0.5); }
+    #contact .section-title { color: #fff; }
+
+    #contact p {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 2;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-email {
+      display: inline-block;
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: #fff;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      padding-bottom: 0.3rem;
+      transition: border-color 0.3s;
+    }
+    .contact-email:hover { border-color: #fff; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--ink);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 2rem;
+      text-align: center;
+    }
+    footer p {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s, transform 0.7s;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 64px; left: 0; right: 0;
+        background: rgba(250, 250, 248, 0.98);
+        backdrop-filter: blur(12px);
+        padding: 1.5rem 2rem;
+        gap: 1.2rem;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      section { padding: 5rem 1.5rem; }
+
+      .profile-card {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .info-table th { width: 100px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo"><span>H</span>anarewaza</a>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#strength">Strength</a>
+        <a href="#cases">Cases</a>
+        <a href="#profile">Profile</a>
+        <a href="#company">Company</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="メニュー">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-label">Corporate Operations Partner for Startups</p>
+      <h1>スタートアップの<br>コーポレートを、<br>まるごと整える。</h1>
+      <p>カオスなバックオフィスを再構築し、<br>急激な事業成長・IPO・M&Aに耐えうる体制へ。<br>社内の一員として、最後まで伴走します。</p>
+      <a href="#contact" class="hero-cta">お問い合わせ</a>
+    </div>
+    <div class="scroll-hint"><span></span></div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="section-inner reveal">
+      <p class="section-label">About</p>
+      <h2 class="section-title">ハナレワザとは</h2>
+      <div class="section-rule"></div>
+      <p class="about-lead">
+        ハナレワザは、<strong>フルタイムの管理本部長やCFOがいないスタートアップ</strong>に対し、コーポレート全般の課題を洗い出し、タスク化し、ロードマップを引き、社内の立場で体制整備を行うコーポレート構築パートナーです。
+      </p>
+      <p class="about-lead">
+        クライアントの社内Slackに常駐し、いつでもハドルや質問に応じる<strong>「社内メンバーに同等の存在」</strong>として支援を行います。ハナレワザは、アドバイザーではなく、具体的なコーポレート体制の構築・整備・運用をフルハンズオンで実行します。
+      </p>
+      <p class="about-lead">
+        経理・財務・経営管理を中心に、法務・労務・総務まで含めた<strong>コーポレートの全領域を横断的にカバー</strong>し、一般的なBPO企業や会計士では対応困難な、仕組み化できない大規模プロジェクトも請け負います。それが「ハナレワザ」という名前の由来です。
+      </p>
+    </div>
+  </section>
+
+  <!-- Strength -->
+  <section id="strength">
+    <div class="section-inner reveal">
+      <p class="section-label">Strength</p>
+      <h2 class="section-title">ハナレワザの独自性</h2>
+      <div class="section-rule"></div>
+      <div class="strength-grid">
+        <div class="strength-card">
+          <div class="strength-num">01</div>
+          <h3>Slack常駐による圧倒的な近さ</h3>
+          <p>クライアント社内の複数チャンネルに常駐。顧問のように遠い存在ではなく、社員と同じ距離感でコミュニケーションが取れます。</p>
+        </div>
+        <div class="strength-card">
+          <div class="strength-num">02</div>
+          <h3>アドバイスではなく、フルハンズオン</h3>
+          <p>質問に答えるアドバイザーではありません。業務フロー再構築、データ整理、マニュアル整備、士業マネジメントまで、具体的な整備を自ら実行します。</p>
+        </div>
+        <div class="strength-card">
+          <div class="strength-num">03</div>
+          <h3>1,000時間超の重量級プロジェクト対応</h3>
+          <p>一般的な会計事務所や副業人材が断る、仕組み化できない膨大な整理・構築プロジェクトを引き受けます。</p>
+        </div>
+        <div class="strength-card">
+          <div class="strength-num">04</div>
+          <h3>コーポレート全領域の横断支援</h3>
+          <p>経理・財務・経営管理・法務・労務・総務。縦割りではなく、M&AとIPOを経験したCFO兼管理本部長の視点でコーポレート全体をトータルデザインします。</p>
+        </div>
+        <div class="strength-card">
+          <div class="strength-num">05</div>
+          <h3>最後の砦としての責任</h3>
+          <p>ハナレワザに依頼する企業の多くは、他の手段では解決できなかった課題を抱えています。支援を通じて、IPOスケジュールの遵守、M&Aディールの成立、事業成長の継続を支えます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cases -->
+  <section id="cases">
+    <div class="section-inner reveal">
+      <p class="section-label">Cases</p>
+      <h2 class="section-title">支援事例</h2>
+      <div class="section-rule"></div>
+
+      <div class="case-item">
+        <span class="case-tag">不動産テックスタートアップ</span>
+        <h3>経理財務体制の全面再構築 ─ ショートレビュー対応まで</h3>
+        <p>1年以内に四大監査法人の予備調査を受けIPO準備に入りたいという企業からの依頼。</p>
+        <ul>
+          <li>過去数年分・数千万円を超えるBS不明残高を全件精査し、問題点を全て特定</li>
+          <li>顧問税理士による記帳代行不備を修正した上で、上場対応可能な中堅税理士法人に切替え</li>
+          <li>1年以上にわたり月次決算を実施し、経理責任者採用後に経理マニュアルと共に引継ぎ</li>
+          <li>予備調査（ショートレビュー）における全ての会計・財務領域のヒアリングおよび監査法人ディスカッションに対応</li>
+        </ul>
+      </div>
+
+      <div class="case-item">
+        <span class="case-tag">医療機関向けSaaSスタートアップ</span>
+        <h3>CFO業務からコーポレート・オペレーションまで包括支援</h3>
+        <ul>
+          <li>CFO業務（事業計画策定、予実管理・予実分析、PL連動資金繰り表の作成と運用）</li>
+          <li>コーポレート・オペレーション業務全般</li>
+          <li>投資家対応・デューデリジェンス対応</li>
+          <li>コーポレート担当社員・業務委託の採用支援</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Profile -->
+  <section id="profile">
+    <div class="section-inner reveal">
+      <p class="section-label">Profile</p>
+      <h2 class="section-title">代表者</h2>
+      <div class="section-rule"></div>
+      <div class="profile-card">
+        <div class="profile-icon">M</div>
+        <div class="profile-info">
+          <h3>松田 光希</h3>
+          <p class="role">代表社員 ／ コーポレート実務家</p>
+          <p>
+            合同会社ハナレワザ代表。スタートアップのコーポレート領域に特化し、経理・財務・経営管理・法務・労務・総務を横断的にカバーするコーポレート実務家として活動。フルハンズオンの実務支援により、IPO準備やM&A対応を含むコーポレート体制の構築を数多く手がける。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company Info -->
+  <section id="company">
+    <div class="section-inner reveal">
+      <p class="section-label">Company</p>
+      <h2 class="section-title">会社概要</h2>
+      <div class="section-rule"></div>
+      <table class="info-table">
+        <tr><th>商号</th><td>合同会社ハナレワザ</td></tr>
+        <tr><th>代表者</th><td>松田 光希</td></tr>
+        <tr><th>所在地</th><td>東京都千代田区神田小川町1-8-3 小川町北ビル THE HUB神田小川町714</td></tr>
+        <tr><th>事業内容</th><td>スタートアップ向けコーポレート構築支援</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="section-inner reveal">
+      <p class="section-label">Contact</p>
+      <h2 class="section-title">お問い合わせ</h2>
+      <p>コーポレート体制に関するご相談は、<br>お気軽にご連絡ください。</p>
+      <a href="mailto:info@hanarewaza.com" class="contact-email">info@hanarewaza.com</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 合同会社ハナレワザ All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
