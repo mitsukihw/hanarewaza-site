@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プライバシーポリシー | 合同会社ハナレワザ</title>
+  <meta name="description" content="合同会社ハナレワザのプライバシーポリシー。個人情報の取扱いについて定めています。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1a1a;
+      --ink-light: #4a4a4a;
+      --ink-faint: #8a8a8a;
+      --paper: #fafaf8;
+      --paper-warm: #f5f4f0;
+      --accent: #2d4a3e;
+      --accent-light: #3d6b58;
+      --rule: #e0ded8;
+      --serif: 'Cormorant Garamond', serif;
+      --sans: 'Noto Sans JP', sans-serif;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.9;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--accent); color: #fff; }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(250, 250, 248, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+      box-shadow: 0 1px 20px rgba(0,0,0,0.06);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-back {
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--ink-light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--accent); }
+
+    .page-header {
+      padding: 8rem 2rem 3rem;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 500;
+      line-height: 1.5;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .page-header p {
+      font-size: 0.8rem;
+      color: var(--ink-faint);
+    }
+
+    .content {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 2rem 2rem 6rem;
+    }
+
+    .content .lead {
+      font-size: 0.9rem;
+      color: var(--ink-light);
+      line-height: 2.1;
+      margin-bottom: 2.5rem;
+    }
+
+    .content h2 {
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink);
+    }
+
+    .content h3 {
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+
+    .content p {
+      font-size: 0.88rem;
+      color: var(--ink-light);
+      line-height: 2;
+      margin-bottom: 1rem;
+    }
+
+    .content ul, .content ol {
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+    }
+
+    .content li {
+      font-size: 0.88rem;
+      color: var(--ink-light);
+      line-height: 2;
+      margin-bottom: 0.3rem;
+    }
+
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0 1.5rem;
+      font-size: 0.85rem;
+    }
+
+    .content table th,
+    .content table td {
+      border: 1px solid var(--rule);
+      padding: 0.8rem 1rem;
+      text-align: left;
+      vertical-align: top;
+      line-height: 1.8;
+      color: var(--ink-light);
+    }
+
+    .content table th {
+      background: var(--paper-warm);
+      font-weight: 500;
+      color: var(--ink);
+      width: 35%;
+    }
+
+    .info-block {
+      background: var(--paper-warm);
+      padding: 1.5rem 2rem;
+      margin: 1.5rem 0;
+      font-size: 0.88rem;
+      color: var(--ink-light);
+      line-height: 2;
+    }
+
+    footer {
+      background: var(--ink);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 2rem;
+      text-align: center;
+    }
+    footer p {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.05em;
+    }
+    footer a {
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+    }
+    footer a:hover { color: rgba(255,255,255,0.6); }
+
+    @media (max-width: 768px) {
+      .content { padding: 2rem 1.5rem 5rem; }
+      .content table th { width: 30%; }
+      .content table th, .content table td { padding: 0.6rem 0.7rem; font-size: 0.82rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo"><span>H</span>anarewaza</a>
+      <a href="/" class="nav-back">← トップに戻る</a>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <h1>プライバシーポリシー</h1>
+    <p>Privacy Policy</p>
+  </div>
+
+  <div class="content">
+
+    <p class="lead">合同会社ハナレワザ（以下「当社」といいます。）の個人情報保護について、下記（以下「本方針」といいます。）のとおり、その目的、利用範囲及びお取り扱いについてご案内します。</p>
+
+    <h2>1. 定義</h2>
+    <p>本方針における各用語の定義は、「個人情報の保護に関する法律」及び関連する諸規則（以下あわせて「法令」といいます。）に定める定義に従うものとします。</p>
+
+    <h2>2. 個人情報の取得</h2>
+    <p>（1）当社は、個人情報を取得する際には、公表（当社Webサイトによる公表を含み、以下同様とします。）又は通知した利用目的の達成に必要な範囲内で、適正かつ合法的な方法により個人情報を取得します。</p>
+    <p>（2）当社は、要配慮個人情報を取得する場合、原則としてあらかじめご本人の同意を得た上で、取得します。</p>
+
+    <h2>3. 個人情報の利用目的</h2>
+    <p>当社は、以下の目的又はこれに付随関連する目的で個人情報を利用します。</p>
+
+    <table>
+      <tr>
+        <th>個人情報の類型</th>
+        <th>利用目的</th>
+      </tr>
+      <tr>
+        <td>お取引先様（法人の場合はその役職員の皆様）の個人情報</td>
+        <td>・商談及び契約の履行、その他お取引にあたり必要な連絡を行うため<br>・お取引先様の情報管理のため</td>
+      </tr>
+      <tr>
+        <td>当社が運営するWebサイト等から取得する個人情報</td>
+        <td>・お問い合わせへの回答及びご案内の送付を行うため</td>
+      </tr>
+      <tr>
+        <td>採用応募者様及び採用に関する情報提供を希望する方に関する個人情報</td>
+        <td>・当社の採用活動に必要な連絡及び情報提供を行うため</td>
+      </tr>
+      <tr>
+        <td>役員、従業員及びその家族並びに退職者に関する個人情報</td>
+        <td>・業務連絡、業務のアサインメント、お取引先様への紹介、その他の業務遂行のため<br>・報酬支払い、人事及び労務管理の履行並びに福利厚生の提供を行うため<br>・健康管理を行うため<br>・退職後の諸手続のため</td>
+      </tr>
+      <tr>
+        <td>お取引先様に関する特定個人情報</td>
+        <td>・料金等に関する支払調書作成事務のため</td>
+      </tr>
+      <tr>
+        <td>役員、従業員及びその家族並びに退職者に関する特定個人情報</td>
+        <td>・源泉徴収票作成事務等のため<br>・個人住民税に関する届出事務等のため<br>・健康保険及び厚生年金に関する届出事務等のため<br>・雇用保険に関する届出事務等のため</td>
+      </tr>
+    </table>
+
+    <h2>4. 委託先管理</h2>
+    <p>当社は、個人情報に関連する業務の一部を外部事業者に委託する場合、個人情報保護の水準が十分であると認められる事業者を選定し、必要と考えられる義務を契約等により明確にします。</p>
+    <p>また、委託先事業者に個人情報の適切な取扱いを求め、その安全管理のために必要な監督及び監査を継続的に行います。</p>
+
+    <h2>5. 個人データの第三者提供</h2>
+    <p>当社は、以下のいずれかに該当する場合を除き、お預かりした個人データを第三者に提供いたしません。</p>
+    <ol>
+      <li>ご本人から事前にご同意をいただいた場合</li>
+      <li>利用目的の達成に必要な範囲内において外部委託した場合</li>
+      <li>法令に基づく場合</li>
+      <li>人の生命、身体又は財産の保護のために必要な場合であって、ご本人の同意を得ることが困難である場合</li>
+      <li>公衆衛生の向上又は児童の健全な育成の推進のために特に必要な場合であって、ご本人の同意を得ることが困難である場合</li>
+      <li>国の機関若しくは地方公共団体又はその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合であって、ご本人の同意を得ることにより当該事務の遂行に支障を及ぼすおそれがある場合</li>
+    </ol>
+
+    <h2>6. 安全管理措置</h2>
+    <p>当社は、個人情報への不正なアクセスや、漏洩、改ざん又は紛失等を予防し、個人情報に対して適切な安全管理措置を実施します。安全管理措置に関しては、別途社内規程において具体的に定めておりますが、その主な内容は以下のとおりです。</p>
+
+    <h3>（1）組織的安全管理措置</h3>
+    <ul>
+      <li>個人情報取扱責任者を定め、従業員による個人情報の取扱状況について適宜確認をします。</li>
+      <li>個人情報取扱責任者は、個人情報の取扱状況について、定期的に確認及び見直しを行います。</li>
+    </ul>
+
+    <h3>（2）人的安全管理措置</h3>
+    <ul>
+      <li>個人情報取扱責任者の主導で、個人情報を適切に取り扱うよう全役員、従業員及び関係者に対し教育及び啓発活動を実施します。</li>
+    </ul>
+
+    <h3>（3）物理的安全管理措置</h3>
+    <ul>
+      <li>個人情報取扱担当者及び本人以外が容易に個人情報を閲覧等できないような措置を講じます。</li>
+      <li>個人情報を取り扱う機器、電子媒体及び書類等の盗難又は紛失等を防止するために、必要な措置を講じます。</li>
+      <li>個人情報が記録された電子媒体又は書類等を持ち運ぶ場合、パスワードの設定等、紛失及び盗難等を防ぐための安全な方策を講じます。</li>
+      <li>個人情報を削除し、又は、個人情報が記録された機器若しくは電子媒体等を廃棄した場合には、個人情報取扱担当者にこれを確認させます。</li>
+    </ul>
+
+    <h3>（4）技術的安全管理措置</h3>
+    <ul>
+      <li>個人情報への不正なアクセスを防止するため、個人情報を取り扱うことのできる機器及び当該機器を取り扱う従業者を明確化します。</li>
+      <li>情報システムを外部からの不正アクセス又は不正ソフトウェアから保護するために、必要な措置を講じます。</li>
+    </ul>
+
+    <h2>7. 個人データの開示、訂正、削除、利用停止及び第三者提供停止等</h2>
+    <p>当社が保有する個人データの開示、訂正、削除、利用停止、第三者提供停止、及び個人データの第三者提供記録の開示等のお申し出につきましては下記お問い合わせ窓口よりご連絡をお願いいたします。</p>
+    <p>ご本人様であることを確認させていただいた後、法令に基づいて対応させていただきます。</p>
+
+    <h2>8. クッキーの利用</h2>
+    <p>（1）当社のWebサイトでは、ご利用者が一層便利にご利用いただけるように、クッキー（サーバー側でご利用者を識別するために、サーバーからご利用者のブラウザに送信され、ご利用者のデバイスに蓄積される情報）を利用して、ご利用者に関する情報を収集することがあります。</p>
+    <p>（2）ご利用者は、ブラウザの設定により、クッキーの送受信に関する設定を「クッキーを許可する」「クッキーを拒否する」「クッキーを受信したら通知する」などから選択できます。なお、クッキーを拒否する設定を選択されますと、当社の提供する一部サービスを受けられない場合がございます。</p>
+
+    <h2>9. 法令の遵守等</h2>
+    <p>当社は、当社における個人情報の保護について、法令及びガイドラインその他の規範を遵守いたします。また、当社は、本方針のもと構築した個人情報保護の取り組みを的確に運用し、継続的改善を実施いたします。</p>
+
+    <h2>10. お問い合わせ</h2>
+    <p>個人情報に関するお問い合わせは、お問い合わせフォームより下記までお願いいたします。</p>
+    <div class="info-block">
+      合同会社ハナレワザ<br>
+      所在地：東京都千代田区神田小川町1-8-3 小川町北ビル THE HUB神田小川町714<br>
+      代表者：松田 光希<br>
+      個人情報保護管理者：松田 光希<br>
+    </div>
+
+    <p style="margin-top: 2.5rem; font-size: 0.82rem; color: var(--ink-faint);">2026年3月 制定・施行</p>
+
+  </div>
+
+  <footer>
+    <p>&copy; 合同会社ハナレワザ All Rights Reserved. ／ <a href="/">トップページ</a></p>
+  </footer>
+
+</body>
+</html>
